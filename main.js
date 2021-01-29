@@ -1,4 +1,4 @@
-console.log("CONNECTED");
+// console.log("CONNECTED");
 
 const pets = [
     {
