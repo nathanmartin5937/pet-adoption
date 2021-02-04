@@ -217,16 +217,16 @@ const printToDom = (divId, textToPrint) => {
   selectedDiv.innerHTML = textToPrint;
 }
 
-const petBuilder = (taco) => {
+const petBuilder = (e) => {
   let domString = '';
-  for (let i = 0; i < taco.length; i++) {
-    domString += `<div class="card my-2" style="width: 18rem;" id=${i}>
-                    <div class="img-container" style="background-image: url('${taco[i].imageUrl}');"></div>
+  for (let i = 0; i < e.length; i++) {
+    domString += `<div class="card" style="width: 18rem;" id=${i}>
+                    <div class="img-container" style="background-image: url('${e[i].imageUrl}');"></div>
                     <div class="card-body">
-                      <p class="card-text">${taco[i].name}</p>
-                      <p class="card-text">${taco[i].color}</p>
-                      <p class="card-text">${taco[i].specialSkill}</p>
-                      <p class="card-text">${taco[i].type}</p>
+                      <p class="card-text">${e[i].name}</p>
+                      <p class="card-text">${e[i].color}</p>
+                      <p class="card-text">${e[i].specialSkill}</p>
+                      <p class="card-text">${e[i].type}</p>
                       <button type="button" class="btn btn-danger" id="${i}">Delete</button>
                     </div>
                   </div>`;
@@ -236,3 +236,9 @@ printToDom('#pets', domString);
 };
 
 petBuilder(pets);  
+
+const init = () => {
+  petBuilder;
+};
+
+init();
