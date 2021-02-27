@@ -237,8 +237,39 @@ printToDom('#pets', domString);
 
 petBuilder(pets);  
 
+const filterClick = (e) => {
+  const buttonId = e.target.id;
+  const selectedPets = [];
+  for (let i = 0; i < pets.length; i++) {
+    if (pets[i].type === buttonId) {
+      selectedPets.push(pets[i]);
+    }
+  }
+  if (buttonId === "allPets") {
+    petBuilder(pets);
+  } else petBuilder(selectedPets);
+};
+
+const deletePets = (e) => {
+  const targetType = e.target.type;
+  const targetId = e.target.id;
+  if (targetType === "button") {
+    pets.splice(targetId, 1);
+  }
+  petBuilder(pets);
+};
+
+const buttonEvents = () => {
+  document.querySelector("#allPets").addEventListener("click", filterClick);
+  document.querySelector("#Cat").addEventListener("click", filterClick);
+  document.querySelector("#Dog").addEventListener("click", filterClick);
+  document.querySelector("#Dino").addEventListener("click", filterClick);
+  document.querySelector("#pets").addEventListener("click", deletePets)
+};
+
 const init = () => {
-  petBuilder;
+  buttonEvents();
+  petBuilder(pets);
 };
 
 init();
